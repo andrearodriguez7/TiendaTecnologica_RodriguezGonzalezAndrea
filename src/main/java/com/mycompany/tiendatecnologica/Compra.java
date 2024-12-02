@@ -4,6 +4,12 @@
  */
 package com.mycompany.tiendatecnologica;
 
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import javax.swing.JTextField;
+
 /**
  *
  * @author Andrea
@@ -256,4 +262,55 @@ public class Compra extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
     // End of variables declaration//GEN-END:variables
+
+private void buscarProductoPorId(JTextField campoTexto) {
+    Connection conexion = Conexion.getConnection();
+    if (conexion == null) {
+        System.out.println("No se pudo conectar a la base de datos.");
+        return;
+    }
+
+    // Obtener el texto del campo de búsqueda y verificar si está vacío
+    String textoIngresado = campoTexto.getText().trim();
+    if (textoIngresado.isEmpty()) {
+        System.out.println("El campo de texto está vacío. Por favor, ingresa un ID de producto.");
+        return;
+    }
+
+    // Intentar convertir el texto ingresado en un número entero
+    int productoId;
+    try {
+        productoId = Integer.parseInt(textoIngresado);
+    } catch (NumberFormatException ex) {
+        System.out.println("Entrada inválida. El ID debe ser un número entero.");
+        return;
+    }
+
+    // Consulta para verificar si existe un producto con el ID proporcionado
+    String consultaSQL = "SELECT id_producto, nombre FROM productos WHERE id_producto = ?";
+
+    try (PreparedStatement consultaPreparada = conexion.prepareStatement(consultaSQL)) {
+        consultaPreparada.setInt(1, productoId); // Vincular el parámetro
+        ResultSet resultado = consultaPreparada.executeQuery();
+
+        if (resultado.next()) {
+            String nombreProducto = resultado.getString("nombre");
+            System.out.println("Producto encontrado: " + nombreProducto + " (ID: " + productoId + ")");
+        } else {
+            System.out.println("No se encontró ningún producto con el ID " + productoId + ".");
+        }
+
+    } catch (SQLException ex) {
+        System.out.println("Error al buscar el producto en la base de datos: " + ex.getMessage());
+        ex.printStackTrace();
+    } finally {
+        try {
+            conexion.close();
+        } catch (SQLException ex) {
+            System.out.println("Error al cerrar la conexión: " + ex.getMessage());
+        }
+    }
+}
+
+    
 }
