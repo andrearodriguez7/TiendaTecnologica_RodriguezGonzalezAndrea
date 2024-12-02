@@ -235,7 +235,7 @@ public class MainWindow extends javax.swing.JFrame {
     }//GEN-LAST:event_productosMouseClicked
 
     private void historialMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_historialMouseClicked
-        // TODO add your handling code here:
+        mostrarHistorial();
     }//GEN-LAST:event_historialMouseClicked
 
     private void comprarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_comprarMouseClicked
@@ -387,5 +387,63 @@ public class MainWindow extends javax.swing.JFrame {
             e.printStackTrace();
         }
     }
+    
+    private void mostrarHistorial() {
+    try (Connection connection = Conexion.getConnection()) { // Usamos tu clase Conexion para la conexión
+        if (connection == null) {
+            informacion.setText("Error: No se pudo conectar a la base de datos.");
+            return;
+        }
+
+        // Consulta SQL para obtener el historial de compras
+        String query = """
+            SELECT hc.id_compra, 
+                   u.nombre AS usuario, 
+                   p.nombre AS producto, 
+                   hc.cantidad, 
+                   hc.fecha
+            FROM historial_compras hc
+            JOIN usuarios u ON hc.id_usuario = u.id_usuario
+            JOIN productos p ON hc.id_producto = p.id_producto
+        """;
+
+        try (Statement statement = connection.createStatement(); ResultSet resultSet = statement.executeQuery(query)) {
+            StringBuilder historialInfo = new StringBuilder();
+
+            // Verificar si no hay datos en el historial
+            if (!resultSet.isBeforeFirst()) {
+                historialInfo.append("No se encontraron registros de compras.\n");
+            } else {
+                // Cabecera de la tabla
+                historialInfo.append(String.format("     %-10s \t %-20s \t %-20s \t %-10s \t %-15s\n", 
+                    "ID Compra", "Usuario", "Producto", "Cantidad", "Fecha"));
+                historialInfo.append("-----------------------------------------------------------------------------------------------------\n");
+
+                while (resultSet.next()) {
+                    // Obtener los datos de cada compra
+                    int idCompra = resultSet.getInt("id_compra");
+                    String usuario = resultSet.getString("usuario");
+                    String producto = resultSet.getString("producto");
+                    int cantidad = resultSet.getInt("cantidad");
+                    String fecha = resultSet.getString("fecha");
+
+                    // Construir la información del historial
+                    historialInfo.append(String.format("     %-10d \t %-20s \t %-20s \t %-10d \t %-15s\n", 
+                        idCompra, usuario, producto, cantidad, fecha));
+                }
+            }
+
+            // Establecer el texto en el JTextArea
+            informacion.setText(historialInfo.toString());
+        } catch (SQLException e) {
+            informacion.setText("Error al realizar la consulta: " + e.getMessage());
+            e.printStackTrace();
+        }
+    } catch (SQLException e) {
+        informacion.setText("Error al conectar con la base de datos: " + e.getMessage());
+        e.printStackTrace();
+    }
+}
+
 
 }
