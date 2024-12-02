@@ -161,7 +161,7 @@ public class Conexion {
 }
 
 
-    public static void readJSON(String filePath) {
+    public static void lecturaJSON(String filePath) {
         JSONParser parser = new JSONParser();
         try (FileReader reader = new FileReader(filePath)) {
             JSONObject jsonObject = (JSONObject) parser.parse(reader);
@@ -226,7 +226,7 @@ public class Conexion {
     }
 
 
-    static boolean hayDatos() {
+    static boolean datosRepetidos() {
         Connection connection = getConnection();
         String sql="SELECT * FROM historial_compras";
         try (Statement st=connection.createStatement()) {

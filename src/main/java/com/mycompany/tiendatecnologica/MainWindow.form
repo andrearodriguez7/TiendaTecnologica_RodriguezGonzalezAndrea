@@ -124,7 +124,7 @@
               <Group type="102" attributes="0">
                   <EmptySpace min="-2" pref="33" max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                      <Component id="jLabel3" max="32767" attributes="0"/>
+                      <Component id="Categorias" max="32767" attributes="0"/>
                       <Component id="usuarios" alignment="0" max="32767" attributes="0"/>
                       <Component id="productos" alignment="0" max="32767" attributes="0"/>
                       <Component id="historial" alignment="0" max="32767" attributes="0"/>
@@ -156,7 +156,7 @@
                           <EmptySpace type="separate" max="-2" attributes="0"/>
                           <Component id="historial" min="-2" pref="41" max="-2" attributes="0"/>
                           <EmptySpace type="separate" max="-2" attributes="0"/>
-                          <Component id="jLabel3" min="-2" pref="41" max="-2" attributes="0"/>
+                          <Component id="Categorias" min="-2" pref="41" max="-2" attributes="0"/>
                           <EmptySpace min="-2" pref="18" max="-2" attributes="0"/>
                       </Group>
                       <Group type="102" alignment="0" attributes="0">
@@ -246,7 +246,7 @@
             </Component>
           </SubComponents>
         </Container>
-        <Component class="javax.swing.JLabel" name="jLabel3">
+        <Component class="javax.swing.JLabel" name="Categorias">
           <Properties>
             <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
               <Color blue="cc" green="cc" red="cc" type="rgb"/>
@@ -255,6 +255,9 @@
             <Property name="text" type="java.lang.String" value="Categor&#xed;as"/>
             <Property name="opaque" type="boolean" value="true"/>
           </Properties>
+          <Events>
+            <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="CategoriasMouseClicked"/>
+          </Events>
         </Component>
         <Component class="javax.swing.JLabel" name="limpiar">
           <Properties>

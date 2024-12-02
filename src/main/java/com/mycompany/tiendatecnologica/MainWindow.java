@@ -24,8 +24,9 @@ public class MainWindow extends javax.swing.JFrame {
      */
     public MainWindow() {
         initComponents();
-        if (!Conexion.hayDatos()) {
-            Conexion.readJSON("src/main/resources/tienda.json");
+        
+        if (!Conexion.datosRepetidos()) {
+            Conexion.lecturaJSON("src/main/resources/tienda.json");
         }
     }
 
@@ -50,7 +51,7 @@ public class MainWindow extends javax.swing.JFrame {
         comprar = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
         informacion = new javax.swing.JTextArea();
-        jLabel3 = new javax.swing.JLabel();
+        Categorias = new javax.swing.JLabel();
         limpiar = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -145,10 +146,15 @@ public class MainWindow extends javax.swing.JFrame {
         informacion.setRows(5);
         jScrollPane1.setViewportView(informacion);
 
-        jLabel3.setBackground(new java.awt.Color(204, 204, 204));
-        jLabel3.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel3.setText("Categorías");
-        jLabel3.setOpaque(true);
+        Categorias.setBackground(new java.awt.Color(204, 204, 204));
+        Categorias.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        Categorias.setText("Categorías");
+        Categorias.setOpaque(true);
+        Categorias.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                CategoriasMouseClicked(evt);
+            }
+        });
 
         limpiar.setBackground(new java.awt.Color(204, 204, 204));
         limpiar.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
@@ -167,7 +173,7 @@ public class MainWindow extends javax.swing.JFrame {
             .addGroup(jPanel3Layout.createSequentialGroup()
                 .addGap(33, 33, 33)
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(jLabel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(Categorias, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(usuarios, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(productos, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(historial, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -193,7 +199,7 @@ public class MainWindow extends javax.swing.JFrame {
                         .addGap(18, 18, 18)
                         .addComponent(historial, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(18, 18, 18)
-                        .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(Categorias, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(18, 18, 18))
                     .addGroup(jPanel3Layout.createSequentialGroup()
                         .addGap(42, 42, 42)
@@ -248,6 +254,10 @@ public class MainWindow extends javax.swing.JFrame {
         informacion.setText("");
     }//GEN-LAST:event_limpiarMouseClicked
 
+    private void CategoriasMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_CategoriasMouseClicked
+        mostrarCategorias();
+    }//GEN-LAST:event_CategoriasMouseClicked
+
     public static void main(String args[]) {
         /* Set the Nimbus look and feel */
         //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
@@ -281,12 +291,12 @@ public class MainWindow extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JLabel Categorias;
     private javax.swing.JLabel comprar;
     private javax.swing.JLabel historial;
     private javax.swing.JTextArea informacion;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
-    private javax.swing.JLabel jLabel3;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
@@ -435,6 +445,49 @@ public class MainWindow extends javax.swing.JFrame {
 
             // Establecer el texto en el JTextArea
             informacion.setText(historialInfo.toString());
+        } catch (SQLException e) {
+            informacion.setText("Error al realizar la consulta: " + e.getMessage());
+            e.printStackTrace();
+        }
+    } catch (SQLException e) {
+        informacion.setText("Error al conectar con la base de datos: " + e.getMessage());
+        e.printStackTrace();
+    }
+}
+
+    private void mostrarCategorias() {
+    try (Connection connection = Conexion.getConnection()) { // Usamos tu clase Conexion para la conexión
+        if (connection == null) {
+            informacion.setText("Error: No se pudo conectar a la base de datos.");
+            return;
+        }
+
+        // Consulta SQL para obtener las categorías
+        String query = "SELECT id_categoria, nombre FROM categorias";
+
+        try (Statement statement = connection.createStatement(); ResultSet resultSet = statement.executeQuery(query)) {
+            StringBuilder categoriasInfo = new StringBuilder();
+
+            // Verificar si no hay categorías en la base de datos
+            if (!resultSet.isBeforeFirst()) {
+                categoriasInfo.append("No se encontraron categorías registradas.\n");
+            } else {
+                // Cabecera de la tabla
+                categoriasInfo.append(String.format("     %-10s \t %-20s\n", "ID Categoría", "Nombre"));
+                categoriasInfo.append("------------------------------------------------------------\n");
+
+                while (resultSet.next()) {
+                    // Obtener los datos de cada categoría
+                    int idCategoria = resultSet.getInt("id_categoria");
+                    String nombre = resultSet.getString("nombre");
+
+                    // Construir la información de la categoría
+                    categoriasInfo.append(String.format("     %-10d \t %-20s\n", idCategoria, nombre));
+                }
+            }
+
+            // Establecer el texto en el JTextArea
+            informacion.setText(categoriasInfo.toString());
         } catch (SQLException e) {
             informacion.setText("Error al realizar la consulta: " + e.getMessage());
             e.printStackTrace();
