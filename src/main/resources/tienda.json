@@ -1,0 +1,114 @@
+{
+  "tienda": {
+    "nombre": "Mi Tienda Online",
+    "categorias": [
+      {
+        "id": 1,
+        "nombre": "Electrónica",
+        "productos": [
+          {
+            "id": 101,
+            "nombre": "iPhone 15 (Color Azul)",
+            "precio": 999.99,
+            "descripcion": "El último iPhone 15 con cámara de 48 MP, pantalla OLED y procesador A16.",
+            "caracteristicas": {
+              "pantalla": "6.1 pulgadas",
+              "camara": "48 MP",
+              "bateria": "3200 mAh"
+            },
+            "imagenes": ["iphone15_azul_1.jpg", "iphone15_azul_2.jpg"],
+            "inventario": 10
+          },
+          {
+            "id": 102,
+            "nombre": "iPhone 15 (Color Rosa)",
+            "precio": 999.99,
+            "descripcion": "El último iPhone 15 con cámara de 48 MP, pantalla OLED y procesador A16.",
+            "caracteristicas": {
+              "pantalla": "6.1 pulgadas",
+              "camara": "48 MP",
+              "bateria": "3200 mAh"
+            },
+            "imagenes": ["iphone15_rosa_1.jpg", "iphone15_rosa_2.jpg"],
+            "inventario": 10
+          },
+          {
+            "id": 103,
+            "nombre": "iPhone 15 (Color Verde)",
+            "precio": 999.99,
+            "descripcion": "El último iPhone 15 con cámara de 48 MP, pantalla OLED y procesador A16.",
+            "caracteristicas": {
+              "pantalla": "6.1 pulgadas",
+              "camara": "48 MP",
+              "bateria": "3200 mAh"
+            },
+            "imagenes": ["iphone15_verde_1.jpg", "iphone15_verde_2.jpg"],
+            "inventario": 10
+          },
+          {
+            "id": 104,
+            "nombre": "iPhone 15 (Color Negro)",
+            "precio": 999.99,
+            "descripcion": "El último iPhone 15 con cámara de 48 MP, pantalla OLED y procesador A16.",
+            "caracteristicas": {
+              "pantalla": "6.1 pulgadas",
+              "camara": "48 MP",
+              "bateria": "3200 mAh"
+            },
+            "imagenes": ["iphone15_negro_1.jpg", "iphone15_negro_2.jpg"],
+            "inventario": 10
+          }
+        ]
+      }
+    ],
+    "usuarios": [
+      {
+        "id": 1,
+        "nombre": "Juan Pérez",
+        "email": "juanperez@example.com",
+        "direccion": {
+          "calle": "Calle Principal",
+          "numero": 123,
+          "ciudad": "Madrid",
+          "pais": "España"
+        },
+        "historialCompras": [
+          {
+            "productoId": 101,
+            "cantidad": 1,
+            "fecha": "2023-11-14"
+          },
+          {
+            "productoId": 102,
+            "cantidad": 2,
+            "fecha": "2023-11-20"
+          }
+        ]
+      },
+      {
+        "id": 2,
+        "nombre": "María García",
+        "email": "mariagarcia@example.com",
+        "direccion": {
+          "calle": "Avenida Libertad",
+          "numero": 456,
+          "ciudad": "Barcelona",
+          "pais": "España"
+        },
+        "historialCompras": [
+          {
+            "productoId": 103,
+            "cantidad": 1,
+            "fecha": "2023-11-15"
+          },
+          {
+            "productoId": 104,
+            "cantidad": 1,
+            "fecha": "2023-11-18"
+          }
+        ]
+      }
+    ]
+  }
+}
+
