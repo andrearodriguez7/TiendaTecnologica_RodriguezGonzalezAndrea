@@ -36,14 +36,13 @@ public class Compra extends javax.swing.JFrame {
         IDUsuario = new javax.swing.JLabel();
         CajaUsuarios = new javax.swing.JTextField();
         IDProducto = new javax.swing.JLabel();
-        Cantidad = new javax.swing.JLabel();
         CajaProductos = new javax.swing.JTextField();
         CajaCantidad = new javax.swing.JTextField();
         jPanel2 = new javax.swing.JPanel();
-        jLabel4 = new javax.swing.JLabel();
         jPanel3 = new javax.swing.JPanel();
         jLabel5 = new javax.swing.JLabel();
         Comprar = new javax.swing.JLabel();
+        jLabel1 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -67,11 +66,6 @@ public class Compra extends javax.swing.JFrame {
         IDProducto.setText("ID Producto");
         IDProducto.setOpaque(true);
 
-        Cantidad.setBackground(new java.awt.Color(204, 204, 204));
-        Cantidad.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        Cantidad.setText("Cantidad");
-        Cantidad.setOpaque(true);
-
         CajaProductos.setBackground(new java.awt.Color(204, 204, 204));
         CajaProductos.setHorizontalAlignment(javax.swing.JTextField.CENTER);
         CajaProductos.addActionListener(new java.awt.event.ActionListener() {
@@ -82,26 +76,23 @@ public class Compra extends javax.swing.JFrame {
 
         CajaCantidad.setBackground(new java.awt.Color(204, 204, 204));
         CajaCantidad.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        CajaCantidad.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                CajaCantidadActionPerformed(evt);
+            }
+        });
 
         jPanel2.setBackground(new java.awt.Color(204, 204, 204));
-
-        jLabel4.setText("LOGO");
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
         jPanel2Layout.setHorizontalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel2Layout.createSequentialGroup()
-                .addGap(258, 258, 258)
-                .addComponent(jLabel4)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .addGap(0, 551, Short.MAX_VALUE)
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel2Layout.createSequentialGroup()
-                .addGap(17, 17, 17)
-                .addComponent(jLabel4)
-                .addContainerGap(27, Short.MAX_VALUE))
+            .addGap(0, 60, Short.MAX_VALUE)
         );
 
         jPanel3.setBackground(new java.awt.Color(204, 204, 204));
@@ -135,29 +126,39 @@ public class Compra extends javax.swing.JFrame {
             }
         });
 
+        jLabel1.setBackground(new java.awt.Color(204, 204, 204));
+        jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel1.setText("Cantidad");
+        jLabel1.setOpaque(true);
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-            .addComponent(jPanel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(76, 76, 76)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(IDUsuario, javax.swing.GroupLayout.PREFERRED_SIZE, 119, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(Cantidad, javax.swing.GroupLayout.PREFERRED_SIZE, 119, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(IDProducto, javax.swing.GroupLayout.PREFERRED_SIZE, 119, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(63, 63, 63)
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(CajaProductos)
-                            .addComponent(CajaCantidad, javax.swing.GroupLayout.DEFAULT_SIZE, 234, Short.MAX_VALUE)
-                            .addComponent(CajaUsuarios)))
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addGap(76, 76, 76)
+                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                                    .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                    .addComponent(IDUsuario, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                    .addComponent(IDProducto, javax.swing.GroupLayout.DEFAULT_SIZE, 119, Short.MAX_VALUE))
+                                .addGap(63, 63, 63)
+                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                    .addComponent(CajaProductos)
+                                    .addComponent(CajaCantidad, javax.swing.GroupLayout.DEFAULT_SIZE, 234, Short.MAX_VALUE)
+                                    .addComponent(CajaUsuarios)))
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addGap(210, 210, 210)
+                                .addComponent(Comprar, javax.swing.GroupLayout.PREFERRED_SIZE, 111, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addGap(0, 0, Short.MAX_VALUE))
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(222, 222, 222)
-                        .addComponent(Comprar, javax.swing.GroupLayout.PREFERRED_SIZE, 111, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(68, Short.MAX_VALUE))
+                        .addContainerGap()
+                        .addComponent(jPanel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                .addContainerGap())
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -172,23 +173,24 @@ public class Compra extends javax.swing.JFrame {
                     .addComponent(IDProducto, javax.swing.GroupLayout.PREFERRED_SIZE, 47, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(CajaProductos, javax.swing.GroupLayout.PREFERRED_SIZE, 63, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(34, 34, 34)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(Cantidad, javax.swing.GroupLayout.PREFERRED_SIZE, 44, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 55, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(CajaCantidad, javax.swing.GroupLayout.PREFERRED_SIZE, 65, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 36, Short.MAX_VALUE)
+                .addGap(33, 33, 33)
                 .addComponent(Comprar, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(27, 27, 27)
-                .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(32, 32, 32)
+                .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addContainerGap()
                 .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap())
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -203,15 +205,30 @@ public class Compra extends javax.swing.JFrame {
 
     private void CajaUsuariosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_CajaUsuariosActionPerformed
         // TODO add your handling code here:
+        buscarUsuarioPorId(CajaUsuarios);
     }//GEN-LAST:event_CajaUsuariosActionPerformed
 
     private void CajaProductosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_CajaProductosActionPerformed
         // TODO add your handling code here:
+        buscarProductoPorId(CajaProductos);
     }//GEN-LAST:event_CajaProductosActionPerformed
 
     private void ComprarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_ComprarMouseClicked
         // TODO add your handling code here:
+        System.out.println("Proceso de compra iniciado...");
+        
+        // Llama a los métodos de búsqueda para confirmar la operación
+        buscarUsuarioPorId(CajaUsuarios);
+        buscarProductoPorId(CajaProductos);
+        buscarCantidadPorId(CajaProductos);
+    
+        System.out.println("Compra realizada exitosamente.");
     }//GEN-LAST:event_ComprarMouseClicked
+
+    private void CajaCantidadActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_CajaCantidadActionPerformed
+        // TODO add your handling code here:
+        buscarCantidadPorId(CajaProductos); 
+    }//GEN-LAST:event_CajaCantidadActionPerformed
 
     /**
      * @param args the command line arguments
@@ -252,11 +269,10 @@ public class Compra extends javax.swing.JFrame {
     private javax.swing.JTextField CajaCantidad;
     private javax.swing.JTextField CajaProductos;
     private javax.swing.JTextField CajaUsuarios;
-    private javax.swing.JLabel Cantidad;
     private javax.swing.JLabel Comprar;
     private javax.swing.JLabel IDProducto;
     private javax.swing.JLabel IDUsuario;
-    private javax.swing.JLabel jLabel4;
+    private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
@@ -312,5 +328,102 @@ private void buscarProductoPorId(JTextField campoTexto) {
     }
 }
 
-    
+private void buscarUsuarioPorId(JTextField campoTexto) {
+    Connection conexion = Conexion.getConnection();
+    if (conexion == null) {
+        System.out.println("No se pudo conectar a la base de datos.");
+        return;
+    }
+
+    // Obtener el texto del campo de búsqueda y verificar si está vacío
+    String textoIngresado = campoTexto.getText().trim();
+    if (textoIngresado.isEmpty()) {
+        System.out.println("El campo de texto está vacío. Por favor, ingresa un ID de usuario.");
+        return;
+    }
+
+    // Intentar convertir el texto ingresado en un número entero
+    int usuarioId;
+    try {
+        usuarioId = Integer.parseInt(textoIngresado);
+    } catch (NumberFormatException ex) {
+        System.out.println("Entrada inválida. El ID debe ser un número entero.");
+        return;
+    }
+
+    // Consulta para verificar si existe un usuario con el ID proporcionado
+    String consultaSQL = "SELECT id_usuario, nombre, email FROM usuarios WHERE id_usuario = ?";
+
+    try (PreparedStatement consultaPreparada = conexion.prepareStatement(consultaSQL)) {
+        consultaPreparada.setInt(1, usuarioId); // Vincular el parámetro
+        ResultSet resultado = consultaPreparada.executeQuery();
+
+        if (resultado.next()) {
+            String nombreUsuario = resultado.getString("nombre");
+            String emailUsuario = resultado.getString("email");
+            System.out.println("Usuario encontrado: " + nombreUsuario + " (ID: " + usuarioId + ", Email: " + emailUsuario + ")");
+        } else {
+            System.out.println("No se encontró ningún usuario con el ID " + usuarioId + ".");
+        }
+
+    } catch (SQLException ex) {
+        System.out.println("Error al buscar el usuario en la base de datos: " + ex.getMessage());
+        ex.printStackTrace();
+    } finally {
+        try {
+            conexion.close();
+        } catch (SQLException ex) {
+            System.out.println("Error al cerrar la conexión: " + ex.getMessage());
+        }
+    }
+}
+
+private void buscarCantidadPorId(JTextField campoTexto) {
+    Connection conexion = Conexion.getConnection();
+    if (conexion == null) {
+        System.out.println("No se pudo conectar a la base de datos.");
+        return;
+    }
+
+    // Obtener el texto del campo de búsqueda y verificar si está vacío
+    String textoIngresado = campoTexto.getText().trim();
+    if (textoIngresado.isEmpty()) {
+        System.out.println("El campo de texto está vacío. Por favor, ingresa un ID de producto.");
+        return;
+    }
+
+    // Intentar convertir el texto ingresado en un número entero
+    int productoId;
+    try {
+        productoId = Integer.parseInt(textoIngresado);
+    } catch (NumberFormatException ex) {
+        System.out.println("Entrada inválida. El ID debe ser un número entero.");
+        return;
+    }
+
+    // Consulta para verificar y obtener la cantidad del producto en inventario
+    String consultaSQL = "SELECT inventario FROM productos WHERE id_producto = ?";
+
+    try (PreparedStatement consultaPreparada = conexion.prepareStatement(consultaSQL)) {
+        consultaPreparada.setInt(1, productoId); // Vincular el parámetro
+        ResultSet resultado = consultaPreparada.executeQuery();
+
+        if (resultado.next()) {
+            int cantidadInventario = resultado.getInt("inventario");
+            System.out.println("Cantidad en inventario para el producto con ID " + productoId + ": " + cantidadInventario);
+        } else {
+            System.out.println("No se encontró ningún producto con el ID " + productoId + ".");
+        }
+
+    } catch (SQLException ex) {
+        System.out.println("Error al buscar la cantidad del producto en la base de datos: " + ex.getMessage());
+        ex.printStackTrace();
+    } finally {
+        try {
+            conexion.close();
+        } catch (SQLException ex) {
+            System.out.println("Error al cerrar la conexión: " + ex.getMessage());
+        }
+    }
+}
 }

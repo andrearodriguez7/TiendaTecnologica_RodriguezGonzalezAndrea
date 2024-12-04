@@ -64,7 +64,7 @@
     "usuarios": [
       {
         "id": 1,
-        "nombre": "Juan Pérez",
+        "nombre": "Juan Perez",
         "email": "juanperez@example.com",
         "direccion": {
           "calle": "Calle Principal",
@@ -87,7 +87,7 @@
       },
       {
         "id": 2,
-        "nombre": "María García",
+        "nombre": "Maria Garcia",
         "email": "mariagarcia@example.com",
         "direccion": {
           "calle": "Avenida Libertad",
