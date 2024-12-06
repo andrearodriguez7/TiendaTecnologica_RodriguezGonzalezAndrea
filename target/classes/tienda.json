@@ -10,7 +10,7 @@
             "id": 101,
             "nombre": "iPhone 15 (Color Azul)",
             "precio": 999.99,
-            "descripcion": "El último iPhone 15 con cámara de 48 MP, pantalla OLED y procesador A16.",
+            "descripcion": "El ultimo iPhone 15 con cámara de 48 MP, pantalla OLED y procesador A16.",
             "caracteristicas": {
               "pantalla": "6.1 pulgadas",
               "camara": "48 MP",
@@ -23,7 +23,7 @@
             "id": 102,
             "nombre": "iPhone 15 (Color Rosa)",
             "precio": 999.99,
-            "descripcion": "El último iPhone 15 con cámara de 48 MP, pantalla OLED y procesador A16.",
+            "descripcion": "El ultimo iPhone 15 con cámara de 48 MP, pantalla OLED y procesador A16.",
             "caracteristicas": {
               "pantalla": "6.1 pulgadas",
               "camara": "48 MP",
@@ -36,7 +36,7 @@
             "id": 103,
             "nombre": "iPhone 15 (Color Verde)",
             "precio": 999.99,
-            "descripcion": "El último iPhone 15 con cámara de 48 MP, pantalla OLED y procesador A16.",
+            "descripcion": "El ultimo iPhone 15 con cámara de 48 MP, pantalla OLED y procesador A16.",
             "caracteristicas": {
               "pantalla": "6.1 pulgadas",
               "camara": "48 MP",
@@ -49,7 +49,7 @@
             "id": 104,
             "nombre": "iPhone 15 (Color Negro)",
             "precio": 999.99,
-            "descripcion": "El último iPhone 15 con cámara de 48 MP, pantalla OLED y procesador A16.",
+            "descripcion": "El ultimo iPhone 15 con cámara de 48 MP, pantalla OLED y procesador A16.",
             "caracteristicas": {
               "pantalla": "6.1 pulgadas",
               "camara": "48 MP",
@@ -64,7 +64,7 @@
     "usuarios": [
       {
         "id": 1,
-        "nombre": "Juan Pérez",
+        "nombre": "Juan Perez",
         "email": "juanperez@example.com",
         "direccion": {
           "calle": "Calle Principal",
@@ -87,7 +87,7 @@
       },
       {
         "id": 2,
-        "nombre": "María García",
+        "nombre": "Maria Garcia",
         "email": "mariagarcia@example.com",
         "direccion": {
           "calle": "Avenida Libertad",
